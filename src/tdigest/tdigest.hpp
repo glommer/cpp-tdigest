@@ -2,12 +2,7 @@
 #define HEADER_TDIGEST
 
 #include <cfloat>
-
 #include "avltree.hpp"
-
-
-using namespace std;
-
 
 class TDigest {
 
@@ -82,7 +77,7 @@ class TDigest {
                 _count += w;
 
                 if(_centroids->size() > 20 * _compression) {
-                    cout << "Compress:" << _centroids->size() << endl;
+                    std::cout << "Compress:" << _centroids->size() << std::endl;
                     compress();
                 }
             }

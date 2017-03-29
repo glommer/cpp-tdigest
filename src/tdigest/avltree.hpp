@@ -5,10 +5,6 @@
 #include <cmath>
 #include <iostream>
 
-
-using namespace std;
-
-
 class AvlTree {
 
     private:
@@ -122,7 +118,7 @@ class AvlTree {
         // O(1)
         inline void updateAggregates(int node) {
             // Updating depth
-            _depth[node] = 1 + max(depth(leftNode(node)), depth(rightNode(node)));
+            _depth[node] = 1 + std::max(depth(leftNode(node)), depth(rightNode(node)));
             _aggregatedCount[node] = count(node) + aggregatedCount(leftNode(node)) + aggregatedCount(rightNode(node));
         }
 
@@ -187,7 +183,7 @@ class AvlTree {
             if(node == NIL) {
                 return depth(node) == 0;
             } else {
-                return depth(node) == 1 + max(depth(leftNode(node)), depth(rightNode(node)))
+                return depth(node) == 1 + std::max(depth(leftNode(node)), depth(rightNode(node)))
                     && abs(depth(leftNode(node)) - depth(rightNode(node))) <= 1
                     && checkBalance(leftNode(node))
                     && checkBalance(rightNode(node))
@@ -238,13 +234,13 @@ class AvlTree {
         void print(int node) const {
             if(node == NIL)
                 return;
-            cout << "Node " << node << "=> ";
-            cout << "Value:" << _values[node] << " ";
-            cout << "(" << _values[leftNode(node)] << ";";
-            cout << "" << _values[rightNode(node)] << ") ";
-            cout << "Depth: " << depth(node) << " ";
-            cout << "Count: " <<_count[node] << " ";
-            cout << "Aggregate: " << _aggregatedCount[node] << endl;
+            std::cout << "Node " << node << "=> ";
+            std::cout << "Value:" << _values[node] << " ";
+            std::cout << "(" << _values[leftNode(node)] << ";";
+            std::cout << "" << _values[rightNode(node)] << ") ";
+            std::cout << "Depth: " << depth(node) << " ";
+            std::cout << "Count: " <<_count[node] << " ";
+            std::cout << "Aggregate: " << _aggregatedCount[node] << std::endl;
             print(leftNode(node));
             print(rightNode(node));
         }
